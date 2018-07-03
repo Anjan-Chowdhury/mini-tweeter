@@ -1,0 +1,24 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  username: postgres
+  password: money
+  pool: 5
+
+development:
+  <<: *default
+  database: mini_tweeter_dev
+test:
+ adapter: postgresql
+ database: mini_tweeter_test
+ username: postgres
+ password: money
+ pool: 5
+ timeout: 5000
+
+
+production:
+  <<: *default
+  database: url-shortener_app_production
+  username: url-shortener_app
+  password: <%= ENV['URL-SHORTENER_APP_DATABASE_PASSWORD'] %>

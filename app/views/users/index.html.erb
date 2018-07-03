@@ -1,0 +1,26 @@
+
+<head>
+  <title>ALL USERS</title>
+</head>
+<body>
+  <center>
+      <h2>ALL USERS LIST</h1>
+      <p><%#= link_to "Create short url", root_path %></p>
+    </center>
+  <table style="width:100%">
+<th>EMAIL</th>
+<th>PHONE NUMBER</th>
+<th>FIRST NAME </th>
+<th>LAST NAME </th>
+<% @users.each do |u| %>
+<tr align = "center">
+  <td><%= u.email %></td>
+  <td><%= u.phone_number %></td>
+  <td><%= u.first_name %></td>
+  <td><%= u.last_name%></td>
+  <td><button><%= link_to "Create new post", new_post_path(user_id: u.id) %></button></td>
+  <td><button><%= link_to "all post", post_by_following_users_posts_path(user_id: u.id) %></button></td>
+</tr>
+<% end %>
+</table>
+</body>

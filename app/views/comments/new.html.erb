@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <%= form_for @comment do |f| %>
+        <% if @comment.errors.any? %>
+          <div id="error_explanation">
+            <h2>
+              <%= pluralize(@comments.errors.count, "error") %>
+            </h2>
+            <ul>
+              <% @comment.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+        <%= f.text_field :content_details, class: 'form-control', placeholder: 'Title Name here', required: true %>
+        <%= f.hidden_field :user_id, :value => @user_id%>
+        <%= f.hidden_field :post_id, :value => @post.id%>
+        <%= f.submit 'Create comment ', class: 'btn btn-default' %>
+      <% end %>
+  </div>
+</div>
