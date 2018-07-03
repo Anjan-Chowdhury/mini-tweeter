@@ -19,7 +19,7 @@
   <td><%= u.first_name %></td>
   <td><%= u.last_name%></td>
   <td><button><%= link_to "Create new post", new_post_path(user_id: u.id) %></button></td>
-  <td><button><%= link_to "all post", post_by_following_users_posts_path(user_id: u.id) %></button></td>
+  <td><button><%= link_to "ALL POST FOR THIS USER", post_by_following_users_posts_path(user_id: u.id) %></button></td>
 </tr>
 <% end %>
 </table>

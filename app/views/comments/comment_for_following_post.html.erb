@@ -1,0 +1,23 @@
+
+<head>
+  <title>Comments</title>
+</head>
+<body>
+  <center>
+      <h2>Comments</h1>
+    </center>
+  <table style="width:100%">
+<th>Comment</th>
+<th>Comment By User</th>
+<th>Commented Time</th>
+<% @comments.each do |comment| %>
+<tr align = "center">
+  <td><%= comment.content_details %></td>
+  <td><%= comment.user.first_name%></td>
+  <td><%= comment.created_at.strftime("%m/%d/%Y")  %></td>
+  <td><button><%= link_to "Write a comment", new_comment_path(post_id: comment.post_id) %></button></td>
+  
+</tr>
+<% end %>
+</table>
+</body>

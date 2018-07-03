@@ -1,0 +1,25 @@
+
+<head>
+  <title>ALL POSTS BELONG TO THANT USER </title>
+</head>
+<body>
+  <center>
+      <h2>ALL POSTS BELONG TO THANT USER</h1>
+      <p><%#= link_to "Create short url", root_path %></p>
+    </center>
+  <table style="width:100%">
+<th>TITLE</th>
+<th>POST</th>
+<th>CREATED BY USER </th>
+<% @all_posts.each do |post| %>
+<tr align = "center">
+  <td><%= post.title %></td>
+  <td><%= post.post_content%></td>
+  <td><%= post.user.first_name %></td>
+  <td><button><%= link_to "Write a comment", new_comment_path(post_id: post.id) %></button></td>
+  <td><button><%= link_to "show all comments", comment_for_following_post_comments_path(post_id: post.id) %></button></td>
+  
+</tr>
+<% end %>
+</table>
+</body>

@@ -5,15 +5,20 @@ class CommentsController < ApplicationController
     @user_id = @post.user_id
   end
    def create
-   	binding.pry
+   	post_id = params["comment"]["post_id"]
     comment = Comment.new(comment_params)
     if comment.save
       #nothing
     else
       flash[:error] = 'Cannot add answer'
     end
-    redirect_to root_path
+    redirect_to comment_for_following_post_comments_path(post_id: post_id)
    end
+
+   def comment_for_following_post
+   	 post_id = params[:post_id]
+     @comments = Comment.where(post_id: post_id)
+   	end
 
   def show
     @comment = Comment.find(params[:id])
